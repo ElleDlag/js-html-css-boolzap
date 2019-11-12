@@ -1,0 +1,285 @@
+
+/* #region area top menu components  */
+.wtp-menu-topbar {
+    background: var(--grey-topbar);
+    height: 59px;
+    padding: 10px 16px;
+    box-sizing: border-box;
+}
+
+/* #endregion */
+
+/* #region area msg top menu .wtp-menu-topbar  */
+.wtp-msg-area>.wtp-menu-topbar {
+    border-right: var(--border-areamsg);
+    border-left: var(--border-areamsg);
+    ;
+}
+
+
+/* #endregion */
+
+/* #region area search in list */
+.search_in-list{
+    height:49px;
+    width: 100%;
+    background: var(--grey-serch-inlist);
+    border-bottom: 1px solid rgba(0,0,0,.08);
+    align-items: center;
+    justify-content: center;
+    
+}
+/* #endregion */
+
+/* #region area type list msg */
+.wtp-list_msg-area{
+    width:100%;
+    flex:1;
+    max-height:calc(100% - 62px);
+    overflow-y: auto;
+    position: relative;
+    background:#E5DDD5;
+    z-index:1
+}
+.wtp-list_msg-area:before{
+    content: "";
+    display: block;
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    width:100%;
+    background: url(../img/bg-chat-tile_8a055527b27b887521a9f084497d8879.png);
+    opacity: .06;
+    z-index:-1
+
+}
+.wtp-input_msg-area{
+    width:100%;
+    min-height:62px;
+    background:var(--grey-input-msg);
+}
+/* #endregion */
+
+/* #region area input msg */
+.wtp-input_msg-area{
+    align-items: center;
+    padding:0 10px;
+    box-sizing: border-box;
+}
+/* #endregion */
+
+
+
+/* #region components avatar */
+.wtp-wrapper-avatar {
+    height: 100%;
+    flex-grow: 1;
+}
+.wtp-avatar {
+    height: 100%;
+    background: deepskyblue;
+    border-radius: 50%;
+}
+/* variation */
+.wtp-wrapper-avatar.no-grow{
+    flex-grow:0;
+    padding-right:15px;
+    margin-top:-1px
+}
+
+/* #endregion */
+
+/* #region components nav button */
+.wtp-wrapper-btn {
+    align-items: center;
+}
+.wtp-wrapper-btn button {
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.wtp-wrapper-btn button:focus {
+    border: none;
+    outline: none;
+}
+
+.wtp-btn_icon {
+    display: block;
+    padding: 8px;
+}
+
+.wtp-btn_icon>svg {
+    display: block;
+}
+
+.wtp-btn_item:not(:first-child)>.wtp-btn_icon {
+    margin-left: 10px;
+}
+
+/* #endregion */
+
+
+
+/* #region components item user pic + info*/
+.wtp-wrapper-item {
+    background: var(--grey-topbar);
+    height: 72px;
+    padding: 11.5px 0;
+    box-sizing: border-box;
+}
+
+.wtp-list-pic {
+    height: 100%;
+    box-sizing: border-box;
+    padding-right: 15px;
+    padding-left: 13px;
+}
+/* #endregion */
+
+/* #region components info all*/
+
+.wtp-wrapper-info{
+    flex-grow:1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+/* #endregion */
+
+/* #region components info user identifier */
+.wtp-usr-identifier{
+    font-size:1.6rem;
+    line-height: 2.1rem
+
+}
+/* #endregion */
+
+/* #region components info user lastinfo */
+
+
+
+/* #region components input-list form */
+.search_in-list form{
+    padding: 0 12px;
+}
+.search_in-list form,
+.search_in-list input{
+    width:100%;
+    line-height: 2rem;
+    min-height: 20px;
+    border:none;
+    border-radius: 999px;
+}
+.search_in-list input{
+font-size: 1.5rem;
+padding:8px 32px 8px 65px
+}
+.search_in-list input:focus{
+    outline:none
+}
+.search_in-list input::placeholder{
+    font-size: 1.4rem;
+    opacity: .6;
+}
+/* #endregion */
+
+/* #region components input-mgs form */
+.input_msg{
+    flex:1;
+    margin:5px 10px;
+    
+}
+#input_msg{
+    box-sizing: border-box;
+    width:100%;
+    padding:9px 15px 11px;
+    border:none;
+    border-radius: 999px;
+    line-height: 2rem;
+    font-size: 1.5rem;
+}
+#input_msg:focus{
+    outline:none
+}
+#input_msg::placeholder{
+    opacity: .6;
+}
+/* #endregion */
+
+/* #region components btn input msg */
+.wtp-input_msg-area>.wtp-wrapper-btn{
+    width:26px;
+    padding: 5px 10px;
+    margin-top:2px;
+}
+.wtp-wrapper-btn #LayerSent{
+    display: none;
+}
+/* #endregion */
+
+
+/* #region components received sent msg */
+.wtp_area-box-msg:first-child{
+    margin-top: 44px;
+}
+.wtp_area-box-msg{
+   width:100%;
+   height:auto;
+   margin-bottom: 12px;
+   padding:0 9%;
+   box-sizing: border-box;
+   display: flex;
+}
+.wtp_area-box-msg.seq{
+    margin-bottom: 2px;
+}
+.wtp_msg-box{
+    max-width:65%;
+    border-radius:7.5px;
+    padding: 6px 7px 8px 9px;
+    font-size: 1.42rem;
+    line-height: 1.9rem;
+    position: relative;
+}
+.wtp_msg-box:after{
+    content: "";
+    display: block;
+    position: absolute;
+    top:0;
+    left:-10px;
+    width:0px;
+    height: 0px;
+    border-radius: 5px;
+    border-top: 15px solid white;
+    border-bottom: 15px solid transparent;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    word-wrap: break-word;
+}
+.wtp_msg-box.sent:after{
+    border-top: 15px solid #DCF8C6;
+    left:initial;
+    right:-10px;
+}
+.wtp_msg-box.received{
+    background: white;
+}
+.wtp_msg-box.sent{
+    background: #DCF8C6;
+    margin-right: 0;
+    margin-left: auto;
+}
+/* #endregion */
+
+
+
+/* NOTE 
+    casi da fixare:
+        correggere lo spazio nel caso di testi sequenziali
+        fare in mod che non prenda anche i precedneti
+    casi impossibili ma da fixare: 
+        correggere la lunghezza nel caso di una stinga senza spazi oltre il 65% 
+*/

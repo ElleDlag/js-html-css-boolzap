@@ -1,0 +1,13 @@
+:root{
+    --main-shadow: 0 1px 1px 0 rgba(0,0,0,.06), 0 2px 5px 0 rgba(0,0,0,.2);
+    --aqua-wtp:#009688;
+    --grey-wtp1:#dadbd4;
+    --grey-wtp2:#F7F9FA;
+    --grey-text:#4a4a4a;
+    --grey-text-info:#454545;
+    --grey-serch-inlist:#F8F8F8;
+    --grey-input-msg:#efefef;
+    --grey-topbar:#eeeeee;
+    --border-areamsg:1px solid rgba(0,0,0,.08);
+    --user-bck:rgba(127, 118, 157, 0.605);
+}
