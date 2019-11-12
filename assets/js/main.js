@@ -12,20 +12,20 @@ $(function(){
     //if not first messagge add class squencial
     function appendMsg(){
         var n = 0;
-        var inputLenght = $('#input_msg').val().length;
+        var inputLenght = $('.input-text').text().length;
 
         for (var i = 0; i < inputLenght; i++) {
-            if($('#input_msg').val().charCodeAt(i) == 32){ n++ }
+            if($('.input-text').text().charCodeAt(i) == 32){ n++ }
         }
         if (n === inputLenght){
             spaceMsg = true;
         }
 
 
-        if(!($('#input_msg').val() == "") && spaceMsg == false){
+        if(!($('.input-text').text() == "") && spaceMsg == false){
             var domMyMsg = $('.wtp_area-box-msg.wtp-sent');
             var myMsg =$(domMyMsg).first().clone();
-            $(myMsg).children().text($('#input_msg').val());
+            $(myMsg).children().text($('.input-text').text());
             $('.wtp-list_msg-area').append(myMsg);
             countMyMsg++
         }
@@ -34,20 +34,19 @@ $(function(){
         }
         $('.wtp-wrapper-btn #LayerSent').css('display', 'none');
         $('.wtp-wrapper-btn #LayerMic').css('display', 'block');
-        $('#input_msg').val("")
-        spaceMsg = false
-        
+        $('.input-text').text("")
+        spaceMsg = false 
     }
 
 
     // ------------
     //  EXECUTION
     // ------------
-    $('form').submit(function(){return false});
     $('.wtp_btn_send').click(appendMsg)
 
-    $('#input_msg').on({
+    $('.input-text').on({
         'keypress':function(e){
+                $('.input-placeholder').addClass('off')
                 $('.wtp-wrapper-btn #LayerSent').css('display', 'block');
                 $('.wtp-wrapper-btn #LayerMic').css('display', 'none');
         },
@@ -55,7 +54,9 @@ $(function(){
             if(e.which == 13) {
                 appendMsg();
             }
-            if(e.which == 8 && $('#input_msg').val() == "") {
+
+            if(e.which == 8 && $('.input-text').text().length === 0) {
+                $('.input-placeholder').removeClass('off')
                 $('.wtp-wrapper-btn #LayerSent').css('display', 'none');
                 $('.wtp-wrapper-btn #LayerMic').css('display', 'block'); 
             }
