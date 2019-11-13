@@ -38,9 +38,6 @@ $(function(){
         $('.wtp-msg-area .input-text').text("")
         spaceMsg = false 
     }
-    $('.wtp-msg-area .input-text').on('submit', function() {
-        appendMsg()
-    });
 
 
     // ------------
@@ -48,11 +45,21 @@ $(function(){
     // ------------
     $('.wtp_btn_send').click(appendMsg)
 
+    $('.wtp-msg-area .input-text').on('submit', function() {
+        appendMsg()
+    });
+
     $('.wtp-msg-area .input-text').on({
         'keydown':function(e){
             if(e.keyCode == 13 && !e.shiftKey){
                 e.preventDefault();
                 $('.wtp-msg-area .input-text').submit();
+            } else if (e.keyCode == 13 && e.shiftKey){
+                $(this).append('CIAO');
+                //bloccata qui il cursore dovrebbe andare alla fine della parola da sostituire con '\r'
+                //la parola è solo per test
+                //ho provato con dei plugin per spostare il cursore ma non funzionano
+                //help!!!!!!
             }
             if($('.wtp-msg-area .input-text').text().length === 0) {
                 $('.input-placeholder').removeClass('off')

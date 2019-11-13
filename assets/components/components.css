@@ -415,7 +415,7 @@ padding:8px 32px 8px 65px
         - aggiungere le icone all'input-search della lista contatti
         - aggiungere in hover su contatti e in click su selezione messaggio, il traingolo per il menu
         - ottimizzare il toggle nei controlli keyCode e fare la funzione recursiva sugli input
-        - fixare shift+enter in modo che faccia una nuova linea 
+        - fixare shift+enter in modo che faccia una nuova linea
          
 
 
@@ -424,4 +424,5 @@ padding:8px 32px 8px 65px
     casi secondari da fixare: 
         ✓ fixare la lunghezza nel caso di una stringa senza spazi oltre il 65%;
         ✓ fixare il responsive dei bubbles una volta raggiunta min-witdh:648px
+        - aggiungere ombra ai messaggi
 */
