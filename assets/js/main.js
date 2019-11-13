@@ -39,6 +39,26 @@ $(function(){
         spaceMsg = false 
     }
 
+    function findInNameContact(){
+        var idItem = $('.wtp-wrapper-list .wtp-usr-identifier');
+        var whatFind = $('.wtp-list-user .input-text').text()
+        var pattern = new RegExp(whatFind, "i");
+        if(whatFind != ""){
+            $(idItem).css('background-color', '#fff')
+            $(idItem).each(function () {
+                if(pattern.test($(this).text())){
+                    $(this).css('background-color', 'khaki')
+                }
+            })
+        } else if(whatFind == ""){ 
+            $(idItem).css('background-color', '#fff')
+        }
+        
+            //'.wtp-wrapper-list .wtp-usr-identifier:contains(' + whatFind + ')'
+            //$('.wtp-wrapper-list .wtp-usr-identifier:contains("La")').css('background-color', 'khaki')
+            //alert("found = " + (findContact.length === 1));
+}
+
 
     // ------------
     //  EXECUTION
@@ -81,4 +101,12 @@ $(function(){
         }
     })
 
+
+    $('.wtp-list-user .input-text').on({
+        'keyup':  function(){
+            var whatFind = $('.wtp-list-user .input-text').text()
+            alert(whatFind)
+                findInNameContact()
+        }
+    });
 })
