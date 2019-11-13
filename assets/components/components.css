@@ -19,16 +19,55 @@
 
 /* #endregion */
 
-/* #region area search in list */
-.search_in-list{
+/* #region area notify  */
+.wtp-wrapper-notify{
+    height:89px;
+    background-color: #9de1fe;
+    padding: 19.5px 12px 20.5px 13px;
+    box-sizing: border-box;
+}
+.wtp-wrapper-notify:hover{
+    cursor: pointer;
+}
+.wtp-wrapper-notify:hover .wtp-usr-lastinfo.var_b{
+    text-decoration: underline;
+}
+.wtp-box-notify{
     height:49px;
-    width: 100%;
+}
+.wtp-box-notify .wtp-avatar{
+    background: none;
+    padding-top:1px
+}
+
+/* #endregion */
+
+/* #region area search in list */
+.wtp_wrapper-area-search{
     background: var(--grey-serch-inlist);
-    border-bottom: 1px solid rgba(0,0,0,.08);
+    height:49px;
     align-items: center;
     justify-content: center;
-    
+    border-bottom: 1px solid rgba(0,0,0,.08);
+    padding:0 13px;
 }
+.wtp_wrapper-input-msg.search{
+    margin:0;
+    height:35px;
+    border-radius: 18px;
+}
+.wtp_wrapper-input-msg.search>.bck_input-msg{
+    padding: 7px 32px 11px 65px;
+   
+}
+.wtp_wrapper-input-msg.search .input-text{
+    max-height: unset;
+    min-height: unset;
+    white-space: unset;
+    word-wrap: unset;
+    overflow: hidden;
+}
+    
 /* #endregion */
 
 /* #region area type list msg */
@@ -122,9 +161,10 @@
 
 
 
+
 /* #region components item user pic + info*/
 .wtp-wrapper-item {
-    background: var(--grey-topbar);
+    background: var(--white);
     height: 72px;
     padding: 11.5px 0;
     box-sizing: border-box;
@@ -158,6 +198,25 @@
 /* #endregion */
 
 /* #region components info user lastinfo */
+.wtp-usr-lastinfo{
+    font-size: 1.3rem;
+    line-height: 2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    opacity: .6;
+}
+.wtp-usr-lastinfo.var_a{
+    font-size: 1.4rem;
+    margin-top: 2px;
+}
+.wtp-usr-lastinfo.var_b{
+    font-size: 1.4rem;
+    margin-top: 2px;
+    opacity: 1;
+}
+
+/* #endregion */
 
 
 
@@ -208,7 +267,6 @@ padding:8px 32px 8px 65px
 }
 .input-placeholder{
     opacity: .6;
-    border:1px solid red;
     position: absolute
 }
 .input-placeholder.off{
@@ -249,7 +307,8 @@ padding:8px 32px 8px 65px
 /* #endregion */
 
 
-/* #region components received sent msg */
+
+/* #region components received sent msg list*/
 .wtp_area-box-msg:first-child{
     margin-top: 44px;
 }
@@ -268,9 +327,9 @@ padding:8px 32px 8px 65px
     max-width:65%;
     border-radius:7.5px;
     padding: 6px 7px 8px 9px;
+    position: relative;
     font-size: 1.42rem;
     line-height: 1.9rem;
-    position: relative;
 }
 .wtp_msg-box:after{
     content: "";
@@ -281,11 +340,12 @@ padding:8px 32px 8px 65px
     width:0px;
     height: 0px;
     border-radius: 5px;
-    border-top: 15px solid white;
+    border-top: 15px solid #fff;
     border-bottom: 15px solid transparent;
     border-left: 12px solid transparent;
     border-right: 12px solid transparent;
     word-wrap: break-word;
+    z-index:1
 }
 .wtp_msg-box.sent:after{
     border-top: 15px solid #DCF8C6;
@@ -300,16 +360,68 @@ padding:8px 32px 8px 65px
     margin-right: 0;
     margin-left: auto;
 }
+.wtp_msg-text{
+    overflow-x: hidden;
+    word-wrap: break-word;
+}
 /* #endregion */
 
+
+/* responsive components*/
+@media screen and (max-width: 1024px) and (min-width: 901px){
+    .wtp_msg-box{
+        max-width:85%;
+    }
+}
+@media screen and (max-width: 900px){
+    .wtp_msg-box{
+        max-width:95%;
+    }
+}
+
+@media screen and (max-width: 912px){
+    .wtp_area-box-msg{
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+}
+@media screen and (max-width: 968px){
+    .wtp_area-box-msg{
+        padding-left: 6.5%;
+        padding-right: 6.5%;
+    }
+}
+@media screen and (max-width: 1024px){
+    .wtp_area-box-msg{
+        padding-left: 7%;
+        padding-right: 7%;
+    }
+}
 
 
 /* NOTE 
     casi da fixare:
-        - correggere lo spazio nel caso di testi sequenziali
-        - fare in mod che non prenda anche i precedneti
         ✓ cambiata la modalità di input costruita adhoc
-    casi impossibili ma da fixare: 
-        correggere la lunghezza nel caso di una stinga senza spazi oltre il 65%
-    
+        ✓ fixata larghezza responsive su main
+        ✓ fixata l'angolo delle bubble in absolute pos aggiunto span per il testo
+        ✓ aggiungere la notifica quindi al click rimuoverla
+        ✓ fixare scroll orrizzontale sulla lista user (è sbagliata va tolta)
+        ✓ sostituire l'input search con il modulo input
+        ✓ aggiungere break o wrap a lista contatti (l'ellipse)
+        ✓ ottimizzato controlli keyboard;
+        ✓ on click su contatto fare l'highlight di selezione
+        - correggere lo spazio nel caso di testi sequenziali, fare in modo che non prenda i precedenti
+        - aggiungere pic dinamicamente (slezionando pic da cartella attenzione al nome)
+        - aggiungere le icone all'input-search della lista contatti
+        - aggiungere in hover su contatti e in click su selezione messaggio, il traingolo per il menu
+        - ottimizzare il toggle nei controlli keyCode e fare la funzione recursiva sugli input
+        - fixare shift+enter in modo che faccia una nuova linea 
+         
+
+
+
+        
+    casi secondari da fixare: 
+        ✓ fixare la lunghezza nel caso di una stringa senza spazi oltre il 65%;
+        ✓ fixare il responsive dei bubbles una volta raggiunta min-witdh:648px
 */
