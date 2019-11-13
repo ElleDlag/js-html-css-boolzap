@@ -44,19 +44,21 @@ $(function(){
         var whatFind = $('.wtp-list-user .input-text').text()
         var pattern = new RegExp(whatFind, "i");
         if(whatFind != ""){
-            $(idItem).css('background-color', '#fff')
+            
+            $(this).parents('.wtp-wrapper-item').css('display', 'block')
+
             $(idItem).each(function () {
-                if(pattern.test($(this).text())){
-                    $(this).css('background-color', 'khaki')
-                }
+                if(!(pattern.test($(this).text()))){
+                    $(this).parents('.wtp-wrapper-item').css('display', 'none')
+                } else { $(this).parents('.wtp-wrapper-item').css('display', 'block')}
             })
         } else if(whatFind == ""){ 
-            $(idItem).css('background-color', '#fff')
+            $(idItem).parents('.wtp-wrapper-item').css('display', 'block')
         }
         
-            //'.wtp-wrapper-list .wtp-usr-identifier:contains(' + whatFind + ')'
-            //$('.wtp-wrapper-list .wtp-usr-identifier:contains("La")').css('background-color', 'khaki')
-            //alert("found = " + (findContact.length === 1));
+        //variante ma senza case sensitive
+        //$('.wtp-wrapper-list .wtp-usr-identifier:contains("La")').css('background-color', 'khaki')
+
 }
 
 
@@ -105,7 +107,7 @@ $(function(){
     $('.wtp-list-user .input-text').on({
         'keyup':  function(){
             var whatFind = $('.wtp-list-user .input-text').text()
-            alert(whatFind)
+            //alert(whatFind)
                 findInNameContact()
         }
     });
