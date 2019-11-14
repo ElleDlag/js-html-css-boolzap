@@ -1,5 +1,6 @@
 :root{
     --main-shadow: 0 1px 1px 0 rgba(0,0,0,.06), 0 2px 5px 0 rgba(0,0,0,.2);
+    --msg-shadow:0 1px 0.5px rgba(0,0,0,.13);
     --aqua-wtp:#009688;
     --grey-wtp1:#dadbd4;
     --grey-wtp2:#F7F9FA;

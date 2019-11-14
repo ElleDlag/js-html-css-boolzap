@@ -291,7 +291,7 @@ padding:8px 32px 8px 65px
     z-index: 1;
 }
 .input-text:focus{
-    outline:none
+    outline:none;
 }
 /* #endregion */
 
@@ -330,6 +330,7 @@ padding:8px 32px 8px 65px
     position: relative;
     font-size: 1.42rem;
     line-height: 1.9rem;
+    box-shadow: var(--msg-shadow);
 }
 .wtp_msg-box:after{
     content: "";
@@ -363,6 +364,7 @@ padding:8px 32px 8px 65px
 .wtp_msg-text{
     overflow-x: hidden;
     word-wrap: break-word;
+    white-space: pre-line;
 }
 /* #endregion */
 
@@ -410,12 +412,16 @@ padding:8px 32px 8px 65px
         ✓ aggiungere break o wrap a lista contatti (l'ellipse)
         ✓ ottimizzato controlli keyboard;
         ✓ on click su contatto fare l'highlight di selezione
+        ✓ fixare shift+enter in modo che faccia una nuova linea
+        ✓ corregge come per lo spazio, se vengo inseriti solo caratteri enter
+        ✓ ottimizzata la ricerca con reg ex degli spazi bianchi
         - correggere lo spazio nel caso di testi sequenziali, fare in modo che non prenda i precedenti
         - aggiungere pic dinamicamente (slezionando pic da cartella attenzione al nome)
         - aggiungere le icone all'input-search della lista contatti
         - aggiungere in hover su contatti e in click su selezione messaggio, il traingolo per il menu
         - ottimizzare il toggle nei controlli keyCode e fare la funzione recursiva sugli input
-        - fixare shift+enter in modo che faccia una nuova linea
+        
+        
          
 
 
@@ -424,5 +430,5 @@ padding:8px 32px 8px 65px
     casi secondari da fixare: 
         ✓ fixare la lunghezza nel caso di una stringa senza spazi oltre il 65%;
         ✓ fixare il responsive dei bubbles una volta raggiunta min-witdh:648px
-        - aggiungere ombra ai messaggi
+        ✓ aggiungere ombra ai messaggi
 */
