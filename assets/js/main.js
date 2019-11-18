@@ -1,7 +1,7 @@
 $(function(){
     var countMyMsg = 0;
     var spaceMsg = false;
-    var myMsgText = $('.wtp-msg-area .input-text');
+    var myMsgText = $('.wtp-msg-area .input-text');//area input
     var checkTime;
     
     // ------------
@@ -13,37 +13,32 @@ $(function(){
     //condition if not empty all space char (whit n coninter)
     //if not first messagge add class squencial
     function appendMsg(){
-        var n = 0;
-        var inputLenght = $('.wtp-msg-area .input-text').text().length;
-        
-        
+
         //if input have only white space
         var checkText= myMsgText.text()
         if (/^\s*$/.test(checkText)) {
             spaceMsg = true;
         }
-        
-
+        //if input have text eand white space
         if(!($(myMsgText).text() == "") && spaceMsg == false){
-            var domMyMsg = $('.wtp_area-box-msg.wtp-sent');
-            var myMsg =$(domMyMsg).first().clone();
-            var outputText = $(myMsg).find('span')
-
-            $(outputText).text($(myMsgText).text())
-            $('.wtp-list_msg-area').append(myMsg);
-            countMyMsg++
+            $('.wtp-list_msg-area').append($(el_sentMsg).clone())
+            $('.wtp_msg-item.wtp-sent').last().find('.wtp_msg-text').text($(myMsgText).text())
+            
         }
+        //-----
         //if is sequencial messages
         /* if(countMyMsg > 0){
             $(domMyMsg).addClass('seq')
         } */
-        $('.wtp-wrapper-btn #LayerSent').css('display', 'none');
-        $('.wtp-wrapper-btn #LayerMic').css('display', 'block');
+        //----
+        //$('.wtp-wrapper-btn #LayerSent').css('display', 'none');
+        //$('.wtp-wrapper-btn #LayerMic').css('display', 'block');
         $(myMsgText).text("")
         spaceMsg = false 
         checkTime = setTimeout(botMsg, 2000)
     }
-    function findInNameContact(){
+    //da semplificare soluzione complicaaaaaaaaaata
+    /* function findInNameContact(){
         var idItem = $('.wtp-wrapper-list .wtp-usr-identifier');
         var whatFind = $('.wtp-list-user .input-text').text()
         var pattern = new RegExp(whatFind, "i");
@@ -57,23 +52,34 @@ $(function(){
         } else if(whatFind == ""){ 
             $(idItem).parents('.wtp-wrapper-item').css('display', 'block')
         }
-        
         //variante ma senza case sensitive
         //$('.wtp-wrapper-list .wtp-usr-identifier:contains("La")').css('background-color', 'khaki')
-
-    }   
+    }  */  
+    
+    function findInNameContact(){
+        var idItem = $('.wtp-wrapper-item');
+        var whatFind=$('.wtp-list-user .input-text').text().toLowerCase();
+        // loop in item that contain element where find something
+        $(idItem).each(function(){
+            // specific element where search text
+            var whereFind=$(this).find(".wtp-usr-identifier").text().toLowerCase();
+            // condition if found it! or not!
+            if (whereFind.includes(whatFind)){
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        })
+    }
     function botMsg(){
-        var checkParent = document.querySelector('.wtp-input_msg-area .input-text');
+        /* var checkParent = document.querySelector('.wtp-input_msg-area .input-text');
         var checkFocus =  $('.input-text:focus')[0];
+        if(checkFocus == checkParent){} *///verifica il focus
         var n = 3000;
         var msgIndex = ['risposta#1', 'risposta#2', 'risposta#3','risposta#4','risposta#5'];
-        var domPcMsg = $('.wtp_area-box-msg.wtp-recived');
-        var pcMsg =$(domPcMsg).first().clone();
-        var outputPcText = $(pcMsg).find('span')
-        $(outputPcText).text(msgIndex[0])
-        if(checkFocus == checkParent){
-           alert('vuoi scrivere dell\'altro?')
-        } else {$('.wtp-list_msg-area').append(pcMsg); }
+        $('.wtp-list_msg-area').append($(el_receivedMsg).clone())
+        $('.wtp_msg-item.wtp-received').last().find('.wtp_msg-text').text(msgIndex[0])
+        
     }
 
     // ------------
@@ -81,11 +87,10 @@ $(function(){
     // ------------
     $('.wtp_btn_send').click(appendMsg)
 
-    $('.wtp-msg-area .input-text').on('submit', function() {
-        appendMsg()
-    });
-
     $('.wtp-msg-area .input-text').on({
+        'submit': function() {
+            appendMsg()
+        },
         'keydown':function(e){
             
 
@@ -116,9 +121,7 @@ $(function(){
 
     $('.wtp-list-user .input-text').on({
         'keyup':  function(){
-            var whatFind = $('.wtp-list-user .input-text').text()
-            //alert(whatFind)
-                findInNameContact()
+            findInNameContact()
         }
     });
 })

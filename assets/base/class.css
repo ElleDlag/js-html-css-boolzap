@@ -1,4 +1,12 @@
 body{
     color:var(--grey-text)
 }
+button{
+    background:none;
+    border:none;
+    cursor: pointer;
+}
+button:focus{
+    outline: none;
+}
 

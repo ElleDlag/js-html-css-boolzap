@@ -33,6 +33,7 @@ main {
     height: 100%;
     background: var(--white);
     position: relative;
+    background: hotpink;
 }
 .wtp-wrapper-list {
     position: relative;

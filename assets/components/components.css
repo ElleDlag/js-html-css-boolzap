@@ -170,7 +170,7 @@
     box-sizing: border-box;
 }
 
-.wtp-list-pic {
+.wtp-contact-box {
     height: 100%;
     box-sizing: border-box;
     padding-right: 15px;
@@ -297,7 +297,7 @@ padding:8px 32px 8px 65px
 
 /* #region components btn input msg */
 .wtp-input_msg-area>.wtp-wrapper-btn{
-    width:26px;
+    width:auto;
     padding: 5px 10px;
     margin-top:2px;
 }
@@ -309,10 +309,10 @@ padding:8px 32px 8px 65px
 
 
 /* #region components received sent msg list*/
-.wtp_area-box-msg:first-child{
+.wtp_msg-item:first-child{
     margin-top: 44px;
 }
-.wtp_area-box-msg{
+.wtp_msg-item{
    width:100%;
    height:auto;
    margin-bottom: 12px;
@@ -320,10 +320,13 @@ padding:8px 32px 8px 65px
    box-sizing: border-box;
    display: flex;
 }
-.wtp_area-box-msg.seq{
+.wtp_wrapper-msg-element{
+    position: relative;
+}
+.wtp_msg-item.seq{
     margin-bottom: 2px;
 }
-.wtp_msg-box{
+.wtp_msg-outline{
     max-width:65%;
     border-radius:7.5px;
     padding: 6px 7px 8px 9px;
@@ -332,7 +335,7 @@ padding:8px 32px 8px 65px
     line-height: 1.9rem;
     box-shadow: var(--msg-shadow);
 }
-.wtp_msg-box:after{
+.wtp_msg-outline:after{
     content: "";
     display: block;
     position: absolute;
@@ -348,16 +351,16 @@ padding:8px 32px 8px 65px
     word-wrap: break-word;
     z-index:1
 }
-.wtp_msg-box.sent:after{
-    border-top: 15px solid #DCF8C6;
+.wtp_msg-outline.sent:after{
+    border-top: 15px solid rgb(var(--bck-sent-msg));
     left:initial;
     right:-10px;
 }
-.wtp_msg-box.received{
+.wtp_msg-outline.received{
     background: white;
 }
-.wtp_msg-box.sent{
-    background: #DCF8C6;
+.wtp_msg-outline.sent{
+    background: rgb(var(--bck-sent-msg));
     margin-right: 0;
     margin-left: auto;
 }
@@ -369,37 +372,92 @@ padding:8px 32px 8px 65px
 /* #endregion */
 
 
-/* responsive components*/
+/* #region components wrapper menu*/
+.wtp_wrapper-menu.hover{
+    /* visibility: visible; */
+    cursor: pointer;
+    right:0;
+    transition:right 150ms ease;
+    opacity:1
+}
+.wtp_wrapper-menu{
+    height:18px;
+    width:25px;
+    position: absolute;
+    top:0px;
+    right:-10px;
+    z-index:2;
+    opacity:0;
+    /* visibility:hidden; */
+    background:linear-gradient(to left, rgb(var(--bck-sent-msg)) 50%, rgba(var(--bck-sent-msg), 0.5));
+    /* border:1px solid red; */
+}
+.wtp_wrapper-menu .wtp-btn_item+.wtp_menu-contextual{
+
+    display: none;
+}
+.wtp_wrapper-menu .wtp-btn_item.on+.wtp_menu-contextual{
+    background: #fff;
+    position:absolute;
+    width:auto;
+    display: flex;
+    flex-flow: column;
+    flex-wrap: nowrap;
+    padding:9px 0;
+    right:0;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26), 0 2px 10px 0 rgba(0,0,0,.16);
+    border-radius: 5px;
+    transition: right 250ms;
+}
+.wtp_menu-item{
+    width:100;
+    white-space: nowrap;
+    padding:10px 24px;
+    z-index:999
+
+}
+.wtp_menu-item:hover{
+    background: var(--grey-input-msg);
+
+}
+
+/* #endregion */
+
+
+
+
+
+/* #region responsive components*/
 @media screen and (max-width: 1024px) and (min-width: 901px){
-    .wtp_msg-box{
+    .wtp_msg-outline{
         max-width:85%;
     }
 }
 @media screen and (max-width: 900px){
-    .wtp_msg-box{
+    .wtp_msg-outline{
         max-width:95%;
     }
 }
 
 @media screen and (max-width: 912px){
-    .wtp_area-box-msg{
+    .wtp_msg-item{
         padding-left: 6%;
         padding-right: 6%;
     }
 }
 @media screen and (max-width: 968px){
-    .wtp_area-box-msg{
+    .wtp_msg-item{
         padding-left: 6.5%;
         padding-right: 6.5%;
     }
 }
 @media screen and (max-width: 1024px){
-    .wtp_area-box-msg{
+    .wtp_msg-item{
         padding-left: 7%;
         padding-right: 7%;
     }
 }
-
+/* #endregion */
 
 /* NOTE 
     casi da fixare:
@@ -414,7 +472,8 @@ padding:8px 32px 8px 65px
         ✓ on click su contatto fare l'highlight di selezione
         ✓ fixare shift+enter in modo che faccia una nuova linea
         ✓ corregge come per lo spazio, se vengo inseriti solo caratteri enter
-        ✓ ottimizzata la ricerca con reg ex degli spazi bianchi
+        ✓ ottimizzato l'inserimento testo con reg ex degli spazi bianchi
+        ✓ semplificata la ricerca con il metodo find forzando al LowerCase sia il campo di ricerca si i campi da ricercare
         - correggere lo spazio nel caso di testi sequenziali, fare in modo che non prenda i precedenti
         - aggiungere pic dinamicamente (slezionando pic da cartella attenzione al nome)
         - aggiungere le icone all'input-search della lista contatti
