@@ -64,7 +64,6 @@ $(function () {
     var mod_boxBtn = $('#tmplt_btn-box').html().trim();
     var mod_msgItem = $('#tmplt_model-msg-item').html().trim(); //class .wtp-sent|| .wtp-received || .seq; > .sent || .received; 
     var mod_menuCntx = $('#tmplt_menu-wrapper-cntx').html().trim();
-    var mod_test = $('#test').html().trim();
 
 
     // ----------------
@@ -183,11 +182,6 @@ $(function () {
             .children('.wtp_wrapper-msg-element').append($(el_Cntxmenu).clone().append('<div class="wtp_menu-contextual"></div>'))
 
     /* #endregion */
-
-    
-    
-
-
 
 })//close here 
 
